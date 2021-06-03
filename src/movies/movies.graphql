@@ -1,0 +1,13 @@
+type Query {
+  all_movies: [Movie]
+}
+
+type Mutation {
+  add_movie(
+    title: String!
+    poster: String!
+    filmed: String!
+    genre: String!
+    discription: String!
+  ): Movie
+}

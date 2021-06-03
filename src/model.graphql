@@ -1,0 +1,27 @@
+type User {
+  id: ID!
+  token: String!
+  email: String!
+  password: String!
+  avatar: String!
+  name: String!
+  role: String!
+  charges: [Charge!]!
+  spends: [Spend!]!
+  comments: [Conmment!]!
+  createAt: String!
+  updatedAt: String!
+}
+
+type Movie {
+  id: Int!
+  title: String!
+  poster: String!
+  filmed: String!
+  genre: String!
+  discription: String!
+  stars: [Star]
+  comments: [Comment]
+  createdAt: DateTime
+  updatedAt: DateTime
+}

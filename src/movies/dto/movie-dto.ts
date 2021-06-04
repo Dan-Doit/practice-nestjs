@@ -1,8 +1,13 @@
 import { ArgsType, Field } from '@nestjs/graphql';
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsNotEmpty, IsNumber, IsString } from 'class-validator';
 
 @ArgsType()
-export class CreateMovieArgs implements Readonly<CreateMovieArgs> {
+export class MovieDTO implements Readonly<MovieDTO> {
+  @Field()
+  @IsNotEmpty()
+  @IsNumber()
+  id: number;
+
   @Field()
   @IsNotEmpty()
   @IsString()
@@ -27,4 +32,14 @@ export class CreateMovieArgs implements Readonly<CreateMovieArgs> {
   @IsNotEmpty()
   @IsString()
   discription: string;
+
+  @Field()
+  @IsNotEmpty()
+  @IsString()
+  createdAt: string;
+
+  @Field()
+  @IsNotEmpty()
+  @IsString()
+  updatedAt: string;
 }

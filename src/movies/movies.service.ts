@@ -1,39 +1,17 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { CreateMovieDTO } from './dto/create-movie.dto';
-import { UpdateMovieDTO } from './dto/update-movie.dto';
-import { Movie } from './entities/movie.entity';
+import { Movie } from '../model/movie.entity';
+import { CreateMovieArgs } from './dto/create-movie.dto';
+import { MovieRepository } from './repositories/movie.repository';
 
 @Injectable()
 export class MoviesService {
-  private movies: Movie[] = [];
+  constructor(private movieRepository: MovieRepository) {}
 
-  getAll(): Movie[] {
-    return this.movies;
+  async getAllMovies(): Promise<Movie[]> {
+    return this.movieRepository.getAll();
   }
 
-  getOne(id: number): Movie {
-    const movie = this.movies.find((movie) => movie.id === id);
-    if (!movie) {
-      throw new NotFoundException(`Movie id Not Found id : ${id}`);
-    }
-    return movie;
-  }
-
-  deleteOne(id: number) {
-    this.getOne(id);
-    this.movies = this.movies.filter((movie) => movie.id !== id);
-  }
-
-  create(data: CreateMovieDTO): void {
-    this.movies.push({
-      id: this.movies.length + 1,
-      ...data,
-    });
-  }
-
-  update(id: number, updateData: UpdateMovieDTO) {
-    const movie = this.getOne(id);
-    this.deleteOne(id);
-    this.movies.push({ ...movie, ...updateData });
+  async addMovie(args: CreateMovieArgs): Promise<string> {
+    return this.movieRepository.addMovie(args);
   }
 }

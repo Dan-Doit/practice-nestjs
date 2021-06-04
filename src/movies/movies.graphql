@@ -1,5 +1,5 @@
 type Query {
-  all_movies: [Movie]
+  all_movies: [Movie!]!
 }
 
 type Mutation {
@@ -9,5 +9,5 @@ type Mutation {
     filmed: String!
     genre: String!
     discription: String!
-  ): Movie
+  ): String!
 }

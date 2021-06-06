@@ -12,6 +12,13 @@ type Mutation {
     password: String!
     avatar: String
     name: String!
-    token: String!
   ): String!
+}
+
+type Mutation {
+  delete_user(email: String!): String!
+}
+
+type Mutation {
+  update_user(password: String, avatar: String, name: String): String!
 }

@@ -6,12 +6,12 @@ import { PassportModule } from '@nestjs/passport';
 import { AuthService } from './auth.service';
 import { UserModule } from '../user/user.module';
 import { AuthResolver } from './auth.resolver';
-import { jwtConstants } from './guard/jwt-contain';
+import { jwtConstants } from './guards/constants';
 
 @Module({
   imports: [
     UserModule,
-    PassportModule,
+    PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
       secret: jwtConstants.secret,
       signOptions: { expiresIn: '12h' },

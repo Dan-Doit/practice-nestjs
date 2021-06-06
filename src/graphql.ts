@@ -7,15 +7,20 @@
 
 /* tslint:disable */
 /* eslint-disable */
+export interface Token {
+    access_token: string;
+}
+
 export interface IMutation {
-    login(email: string, pass: string): string | Promise<string>;
+    login(email: string, pass: string): token | Promise<token>;
     add_movie(title: string, poster: string, filmed: string, genre: string, discription: string): string | Promise<string>;
-    add_user(email: string, password: string, avatar?: string, name: string, token: string): string | Promise<string>;
+    add_user(email: string, password: string, avatar?: string, name: string): string | Promise<string>;
+    delete_user(email: string): string | Promise<string>;
+    update_user(password?: string, avatar?: string, name?: string): string | Promise<string>;
 }
 
 export interface User {
     id: string;
-    token: string;
     email: string;
     password: string;
     avatar: string;

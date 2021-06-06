@@ -1,3 +1,7 @@
+type token {
+  access_token: String!
+}
+
 type Mutation {
-  login(email: String!, pass: String!): String!
+  login(email: String!, pass: String!): token!
 }

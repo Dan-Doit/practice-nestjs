@@ -1,7 +1,14 @@
 import { Injectable } from '@nestjs/common';
-import { Connection, EntityRepository, InsertResult } from 'typeorm';
+import {
+  Connection,
+  DeleteResult,
+  EntityRepository,
+  InsertResult,
+} from 'typeorm';
 import { BaseRepository } from 'typeorm-transactional-cls-hooked';
 import { CreateUserArgs } from '../dto/create-user.dto';
+import { DeleteUserArgs } from '../dto/delete-user.dto';
+import { UpdateUserArgs } from '../dto/update-user.dto';
 import { User } from '../../model/user.entity';
 
 @EntityRepository(User)
@@ -20,7 +27,7 @@ export class UserRepository extends BaseRepository<User> {
   }
 
   async addUser(args: CreateUserArgs): Promise<InsertResult> {
-    const { email, avatar, name, password, token } = args;
+    const { email, avatar, name, password } = args;
     return this.createQueryBuilder('user')
       .insert()
       .into(User)
@@ -29,8 +36,29 @@ export class UserRepository extends BaseRepository<User> {
         avatar,
         password,
         email,
-        token,
       })
+      .execute();
+  }
+
+  async deleteUser(args: DeleteUserArgs): Promise<DeleteResult> {
+    const { email } = args;
+    return this.createQueryBuilder('user')
+      .delete()
+      .from(User)
+      .where('email = :email', { email })
+      .execute();
+  }
+
+  async updateUser(
+    email: string,
+    avatar: string,
+    name: string,
+    password: string,
+  ) {
+    return this.createQueryBuilder('user')
+      .update(User)
+      .set({ name, avatar, password })
+      .where('email = :email', { email })
       .execute();
   }
 }

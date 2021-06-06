@@ -22,9 +22,4 @@ export class CreateUserArgs implements Readonly<CreateUserArgs> {
   @IsNotEmpty()
   @IsString()
   name: string;
-
-  @Field()
-  @IsNotEmpty()
-  @IsString()
-  token: string;
 }

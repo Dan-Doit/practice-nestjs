@@ -1,3 +1,3 @@
-export const jwtConstants = {
-  secret: 'dan_secret_key',
-};
+import { AuthGuard } from '@nestjs/passport';
+
+export class JwtAuthGuard extends AuthGuard('jwt') {}

@@ -7,6 +7,12 @@
 
 /* tslint:disable */
 /* eslint-disable */
+export interface IMutation {
+    login(email: string, pass: string): string | Promise<string>;
+    add_movie(title: string, poster: string, filmed: string, genre: string, discription: string): string | Promise<string>;
+    add_user(email: string, password: string, avatar?: string, name: string, token: string): string | Promise<string>;
+}
+
 export interface User {
     id: string;
     token: string;
@@ -84,8 +90,6 @@ export interface Comment {
 
 export interface IQuery {
     all_movies(): Movie[] | Promise<Movie[]>;
-}
-
-export interface IMutation {
-    add_movie(title: string, poster: string, filmed: string, genre: string, discription: string): string | Promise<string>;
+    all_users(): User[] | Promise<User[]>;
+    one_user(email: string): User | Promise<User>;
 }

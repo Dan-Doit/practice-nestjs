@@ -1,10 +1,11 @@
-import { Entity, Column, ManyToOne } from 'typeorm';
+import { Entity, Column, ManyToOne, JoinColumn } from 'typeorm';
 import { BaseEntity } from './base.entity';
 import { User } from './user.entity';
 
 @Entity()
 export class Charge extends BaseEntity {
-  @ManyToOne(() => User, (user) => user)
+  @ManyToOne(() => User, (user) => user.charges)
+  @JoinColumn()
   user: User;
 
   @Column({ type: 'integer', nullable: true })

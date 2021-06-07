@@ -5,9 +5,10 @@ type User {
   avatar: String!
   name: String!
   role: String!
-  charges: [Charge!]!
-  spends: [Spend!]!
-  comments: [Comment!]!
+  stars: [Star]
+  charges: [Charge]
+  spends: [Spend]
+  comments: [Comment]
   createAt: String!
   updatedAt: String!
 }
@@ -19,6 +20,7 @@ type Movie {
   filmed: String!
   genre: String!
   discription: String!
+  spends: [Spend]
   stars: [Star]
   comments: [Comment]
   createdAt: String!
@@ -48,26 +50,17 @@ type Charge {
 
 type Star {
   id: Int!
-  title: String!
-  poster: String!
-  filmed: String!
-  genre: String!
-  discription: String!
-  stars: [Star]
-  comments: [Comment]
+  user: User!
+  movie: Movie!
+  star: Int!
   createdAt: String!
   updatedAt: String!
 }
 
 type Comment {
   id: Int!
-  title: String!
-  poster: String!
-  filmed: String!
-  genre: String!
-  discription: String!
-  stars: [Star]
-  comments: [Comment]
+  user: User!
+  comment: String!
   createdAt: String!
   updatedAt: String!
 }

@@ -13,6 +13,6 @@ import {
     MovieRepository,
     MovieRepositoryProvider,
   ],
-  exports: [MovieRepository],
+  exports: [MovieRepository, MovieRepositoryProvider],
 })
 export class MoviesModule {}

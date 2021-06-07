@@ -14,9 +14,16 @@ export interface Token {
 export interface IMutation {
     login(email: string, pass: string): token | Promise<token>;
     add_movie(title: string, poster: string, filmed: string, genre: string, discription: string): string | Promise<string>;
+    create_star(star: number, movieId: number): boolean | Promise<boolean>;
     add_user(email: string, password: string, avatar?: string, name: string): string | Promise<string>;
     delete_user(email: string): string | Promise<string>;
     update_user(password?: string, avatar?: string, name?: string): string | Promise<string>;
+}
+
+export interface IQuery {
+    all_movies(): Movie[] | Promise<Movie[]>;
+    all_users(): User[] | Promise<User[]>;
+    one_user(email: string): User | Promise<User>;
 }
 
 export interface User {
@@ -26,9 +33,10 @@ export interface User {
     avatar: string;
     name: string;
     role: string;
-    charges: Charge[];
-    spends: Spend[];
-    comments: Comment[];
+    stars?: Star[];
+    charges?: Charge[];
+    spends?: Spend[];
+    comments?: Comment[];
     createAt: string;
     updatedAt: string;
 }
@@ -40,6 +48,7 @@ export interface Movie {
     filmed: string;
     genre: string;
     discription: string;
+    spends?: Spend[];
     stars?: Star[];
     comments?: Comment[];
     createdAt: string;
@@ -69,32 +78,17 @@ export interface Charge {
 
 export interface Star {
     id: number;
-    title: string;
-    poster: string;
-    filmed: string;
-    genre: string;
-    discription: string;
-    stars?: Star[];
-    comments?: Comment[];
+    user: User;
+    movie: Movie;
+    star: number;
     createdAt: string;
     updatedAt: string;
 }
 
 export interface Comment {
     id: number;
-    title: string;
-    poster: string;
-    filmed: string;
-    genre: string;
-    discription: string;
-    stars?: Star[];
-    comments?: Comment[];
+    user: User;
+    comment: string;
     createdAt: string;
     updatedAt: string;
-}
-
-export interface IQuery {
-    all_movies(): Movie[] | Promise<Movie[]>;
-    all_users(): User[] | Promise<User[]>;
-    one_user(email: string): User | Promise<User>;
 }

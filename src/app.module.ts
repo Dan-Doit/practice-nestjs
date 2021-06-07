@@ -2,12 +2,13 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ormConfigService } from './config/ormconfig.service';
-import { MoviesModule } from './movies/movies.module';
+import { MoviesModule } from './components/movies/movies.module';
 import { join } from 'path';
 import { GraphQLJSON } from 'graphql-type-json';
 import { AppController } from './app.controller';
 import { AuthModule } from './auth/auth.module';
-import { UserModule } from './user/user.module';
+import { UserModule } from './components/users/user.module';
+import { StarsModule } from './components/stars/stars.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { UserModule } from './user/user.module';
     MoviesModule,
     AuthModule,
     UserModule,
+    StarsModule,
   ],
   controllers: [AppController],
   providers: [],

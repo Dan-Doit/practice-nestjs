@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { UserRepository } from './repositories/user.repository';
 import { CreateUserArgs } from './dto/create-user.dto';
 import { DeleteUserArgs } from './dto/delete-user.dto';
@@ -13,7 +13,12 @@ export class UserService {
   }
 
   async oneUser(email: string) {
-    return this.userRpository.oneUser(email);
+    const user = await this.userRpository.oneUser(email);
+    if (user && user.id) {
+      return user;
+    } else {
+      return null;
+    }
   }
 
   async login(email: string) {
@@ -22,7 +27,12 @@ export class UserService {
 
   async addUser(args: CreateUserArgs): Promise<string> {
     // data looked like {} have to check this out later
-    this.userRpository.addUser(args);
+    const isVaild = await this.oneUser(args.email);
+    if (isVaild && isVaild.email) {
+      return '유저 정보가 이미 존재합니다.';
+    } else {
+      this.userRpository.addUser(args);
+    }
     return 'thanks to sign up here!';
   }
 

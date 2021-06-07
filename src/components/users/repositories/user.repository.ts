@@ -8,8 +8,7 @@ import {
 import { BaseRepository } from 'typeorm-transactional-cls-hooked';
 import { CreateUserArgs } from '../dto/create-user.dto';
 import { DeleteUserArgs } from '../dto/delete-user.dto';
-import { UpdateUserArgs } from '../dto/update-user.dto';
-import { User } from '../../model/user.entity';
+import { User } from '../../../model/user.entity';
 
 @EntityRepository(User)
 @Injectable()

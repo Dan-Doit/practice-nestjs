@@ -6,11 +6,11 @@ import { Movie } from './movie.entity';
 @Entity()
 export class Comment extends BaseEntity {
   @ManyToOne(() => User, (user) => user.comments)
-  @JoinColumn()
+  @JoinColumn({ name: 'user_id' })
   user: User;
 
   @ManyToOne(() => Movie, (movie) => movie.comments)
-  @JoinColumn()
+  @JoinColumn({ name: 'movie_id' })
   movie: Movie;
 
   @Column({ type: 'varchar', length: 300, nullable: true })

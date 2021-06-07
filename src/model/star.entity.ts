@@ -6,11 +6,11 @@ import { Movie } from './movie.entity';
 @Entity()
 export class Star extends BaseEntity {
   @ManyToOne(() => User, (user) => user.stars)
-  @JoinColumn()
+  @JoinColumn({ name: 'user_id' })
   user: User;
 
   @ManyToOne(() => Movie, (movie) => movie.stars)
-  @JoinColumn()
+  @JoinColumn({ name: 'movie_id' })
   movie: Movie;
 
   @Column({ type: 'integer' })

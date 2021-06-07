@@ -5,7 +5,7 @@ import { User } from './user.entity';
 @Entity()
 export class Charge extends BaseEntity {
   @ManyToOne(() => User, (user) => user.charges)
-  @JoinColumn()
+  @JoinColumn({ name: 'user_id' })
   user: User;
 
   @Column({ type: 'integer', nullable: true })

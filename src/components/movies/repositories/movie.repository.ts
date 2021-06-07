@@ -9,10 +9,13 @@ import { Movie } from '../../../model/movie.entity';
 export class MovieRepository extends BaseRepository<Movie> {
   async getAll(): Promise<Movie[]> {
     const movies: Promise<Movie[]> = this.createQueryBuilder('movie')
-      .leftJoinAndSelect('movie.stars', 'star', 'movie.id = star.movieId')
-      // .leftJoinAndSelect('star', '"user" u', 'star."userId" = u.id')
+      .leftJoinAndSelect('movie.stars', 'star', 'movie.id = star.movie_id')
+      .leftJoinAndSelect(
+        'movie.comments',
+        'comment',
+        'movie.id = comment.movie_id',
+      )
       .getMany();
-    console.log(movies);
     return movies;
   }
 
@@ -24,7 +27,6 @@ export class MovieRepository extends BaseRepository<Movie> {
         id.length + 1
       },now(),now(),'${title}','${poster}','${filmed}','${genre}','${discription}');`,
     );
-    console.log(data);
     return 'inserting is successful';
   }
 }

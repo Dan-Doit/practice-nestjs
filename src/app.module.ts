@@ -9,6 +9,7 @@ import { AppController } from './app.controller';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './components/users/user.module';
 import { StarsModule } from './components/stars/stars.module';
+import { CommentsModule } from './components/comments/comments.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { StarsModule } from './components/stars/stars.module';
     AuthModule,
     UserModule,
     StarsModule,
+    CommentsModule,
   ],
   controllers: [AppController],
   providers: [],

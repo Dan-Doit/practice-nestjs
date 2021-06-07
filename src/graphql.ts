@@ -13,6 +13,7 @@ export interface Token {
 
 export interface IMutation {
     login(email: string, pass: string): token | Promise<token>;
+    create_comment(comment: string, movieId: number): string | Promise<string>;
     add_movie(title: string, poster: string, filmed: string, genre: string, discription: string): string | Promise<string>;
     create_star(star: number, movieId: number): boolean | Promise<boolean>;
     add_user(email: string, password: string, avatar?: string, name: string): string | Promise<string>;

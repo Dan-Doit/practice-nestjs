@@ -8,8 +8,8 @@ import { Star } from '../../../model/star.entity';
 export class StarRepository extends BaseRepository<Star> {
   async toggleStar(userId: number, movieId: number): Promise<number | null> {
     const data = await this.createQueryBuilder('star')
-      .where('"userId" = :userId', { userId })
-      .andWhere('"movieId" = :movieId', { movieId })
+      .where('user_id = :userId', { userId })
+      .andWhere('movie_id = :movieId', { movieId })
       .getOne();
     return data?.id ?? null;
   }

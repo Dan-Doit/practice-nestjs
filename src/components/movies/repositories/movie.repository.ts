@@ -15,6 +15,7 @@ export class MovieRepository extends BaseRepository<Movie> {
         'comment',
         'movie.id = comment.movie_id',
       )
+      .orderBy('movie.id', 'ASC')
       .getMany();
     return movies;
   }

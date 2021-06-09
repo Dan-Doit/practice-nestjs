@@ -10,6 +10,8 @@ import { AuthModule } from './auth/auth.module';
 import { UserModule } from './components/users/user.module';
 import { StarsModule } from './components/stars/stars.module';
 import { CommentsModule } from './components/comments/comments.module';
+import { SpendsModule } from './components/spends/spends.module';
+import { ChargesModule } from './components/charges/charges.module';
 
 @Module({
   imports: [
@@ -24,6 +26,8 @@ import { CommentsModule } from './components/comments/comments.module';
         headers: req.headers,
       }),
     }),
+    SpendsModule,
+    ChargesModule,
     MoviesModule,
     AuthModule,
     UserModule,

@@ -20,9 +20,9 @@ type Movie {
   filmed: String!
   genre: String!
   discription: String!
-  spends: [Spend]
-  stars: [Star]
+  avgStar: Int
   comments: [Comment]
+  spends: [Spend]
   createdAt: String!
   updatedAt: String!
 }

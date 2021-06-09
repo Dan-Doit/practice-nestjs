@@ -49,9 +49,9 @@ export interface Movie {
     filmed: string;
     genre: string;
     discription: string;
-    spends?: Spend[];
-    stars?: Star[];
+    avgStar?: number;
     comments?: Comment[];
+    spends?: Spend[];
     createdAt: string;
     updatedAt: string;
 }

@@ -7,7 +7,7 @@ import { MovieRepository } from './repositories/movie.repository';
 export class MoviesService {
   constructor(private movieRepository: MovieRepository) {}
 
-  async getAllMovies(): Promise<Movie[]> {
+  async getAllMovies(): Promise<Movie[] | void> {
     return this.movieRepository.getAll();
   }
 

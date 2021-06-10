@@ -20,11 +20,12 @@ type Movie {
   filmed: String!
   genre: String!
   discription: String!
-  avgStar: Int
+  avgStar: Int!
+  stars: [Star]
   comments: [Comment]
   spends: [Spend]
-  createdAt: String!
-  updatedAt: String!
+  createdAt: String
+  updatedAt: String
 }
 
 type Spend {

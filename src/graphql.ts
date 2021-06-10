@@ -49,11 +49,12 @@ export interface Movie {
     filmed: string;
     genre: string;
     discription: string;
-    avgStar?: number;
+    avgStar: number;
+    stars?: Star[];
     comments?: Comment[];
     spends?: Spend[];
-    createdAt: string;
-    updatedAt: string;
+    createdAt?: string;
+    updatedAt?: string;
 }
 
 export interface Spend {

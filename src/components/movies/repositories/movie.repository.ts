@@ -16,7 +16,16 @@ export class MovieRepository extends BaseRepository<Movie> {
         'movie.id = comment.movie_id',
       )
       .orderBy('movie.id', 'ASC')
-      .getMany();
+      .getMany()
+      .then((res) => {
+        res.forEach((movie) => {
+          const stars = movie['stars'].map((star) => star.star);
+          const arrAvg = stars.reduce((a, b) => a + b, 0) / stars.length;
+          movie['avgStar'] = arrAvg ? arrAvg : 0;
+        });
+        return res;
+      });
+
     return movies;
   }
 

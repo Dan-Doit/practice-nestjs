@@ -8,21 +8,21 @@ import { ChargesService } from './charges.service';
 export class ChargesResolver {
   constructor(private readonly chargesService: ChargesService) {}
 
-  // @UseGuards(GqlAuthGuard)
-  // @Query('get_charges')
-  // async getCharges() {
-  //   return this.chargesService.getCharges();
-  // }
+  @UseGuards(GqlAuthGuard)
+  @Query('get_charges')
+  async getCharges() {
+    return this.chargesService.getCharges();
+  }
 
-  // @UseGuards(GqlAuthGuard)
-  // @Mutation('charge')
-  // async charge() {
-  //   return 'this will return create charge';
-  // }
+  @UseGuards(GqlAuthGuard)
+  @Mutation('charge')
+  async charge() {
+    return 'this will return create charge';
+  }
 
-  // @UseGuards(GqlAuthGuard)
-  // @Mutation('cancel_charge')
-  // async cancelCharge() {
-  //   return 'this will return cancel charge';
-  // }
+  @UseGuards(GqlAuthGuard)
+  @Mutation('cancel_charge')
+  async cancelCharge() {
+    return 'this will return cancel charge';
+  }
 }

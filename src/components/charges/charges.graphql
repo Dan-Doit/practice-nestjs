@@ -1,0 +1,11 @@
+type Query {
+  get_charges: Charge!
+}
+
+type Mutation {
+  charge: String!
+}
+
+type Mutation {
+  cancel_charge: String!
+}

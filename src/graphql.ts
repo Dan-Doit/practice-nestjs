@@ -13,6 +13,8 @@ export interface Token {
 
 export interface IMutation {
     login(email: string, pass: string): token | Promise<token>;
+    charge(): string | Promise<string>;
+    cancel_charge(): string | Promise<string>;
     create_comment(comment: string, movieId: number): string | Promise<string>;
     add_movie(title: string, poster: string, filmed: string, genre: string, discription: string): string | Promise<string>;
     create_star(star: number, movieId: number): boolean | Promise<boolean>;
@@ -22,6 +24,7 @@ export interface IMutation {
 }
 
 export interface IQuery {
+    get_charges(): Charge[] | Promise<Charge[]>;
     all_movies(): Movie[] | Promise<Movie[]>;
     all_users(): User[] | Promise<User[]>;
     one_user(email: string): User | Promise<User>;
@@ -71,7 +74,7 @@ export interface Charge {
     id: number;
     user: User;
     point: number;
-    vaild: boolean;
+    valid: boolean;
     chargedby: string;
     comments?: Comment[];
     createdAt: string;

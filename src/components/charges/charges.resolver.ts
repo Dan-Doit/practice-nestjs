@@ -1,6 +1,6 @@
 import { UseGuards } from '@nestjs/common';
 import { Mutation, Query, Resolver } from '@nestjs/graphql';
-import { CurrentUser } from 'src/auth/current-user.decorator';
+import { CurrentUser } from '../../auth/current-user.decorator';
 import { GqlAuthGuard } from '../../auth/guards/gql-auth.guard';
 import { ChargesService } from './charges.service';
 
@@ -10,8 +10,9 @@ export class ChargesResolver {
 
   @UseGuards(GqlAuthGuard)
   @Query('get_charges')
-  async getCharges() {
-    return this.chargesService.getCharges();
+  async getCharges(@CurrentUser() user: any) {
+    const { id } = user;
+    return this.chargesService.getCharges(id);
   }
 
   @UseGuards(GqlAuthGuard)

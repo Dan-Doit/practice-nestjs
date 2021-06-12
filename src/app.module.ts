@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { ScheduleModule } from '@nestjs/schedule';
 import { ormConfigService } from './config/ormconfig.service';
 import { MoviesModule } from './components/movies/movies.module';
 import { join } from 'path';
@@ -26,6 +27,7 @@ import { ChargesModule } from './components/charges/charges.module';
         headers: req.headers,
       }),
     }),
+    ScheduleModule.forRoot(),
     SpendsModule,
     ChargesModule,
     MoviesModule,

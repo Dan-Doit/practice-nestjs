@@ -42,7 +42,7 @@ type Charge {
   id: Int!
   user: User!
   point: Int!
-  vaild: Boolean!
+  valid: Boolean!
   chargedby: String!
   comments: [Comment]
   createdAt: String!

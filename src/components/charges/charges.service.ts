@@ -13,7 +13,7 @@ export class ChargesService {
   @Cron('5 * * * * *')
   async handleCron() {
     const date = new Date();
-    console.log(`this will retuen when the time pointed every 5s with ${date}`);
+    console.log(`Cron will do this function every 5s with ${date}`);
     const data = await this.chargeRepository.allCharges();
     this.chargeRepository.toggleCharges(data);
   }

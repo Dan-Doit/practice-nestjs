@@ -25,6 +25,28 @@ export class ChargeRepository extends BaseRepository<Charge> {
         .execute();
     });
   }
+
+  // async expireCheck(){
+  //   const expirationEstimate = await this.createQueryBuilder('estimate')
+  //   .select(['estimate.id'])
+  //   .where('estimate.status = :status', {
+  //     status: EstimateStatus.SUBMITTED,
+  //   })
+  //   .andWhere('now() >= estimate.end_date')
+  //   .getMany();
+
+  // const ids = expirationEstimate.map(res => res.id);
+
+  // if (ids.length) {
+  //   return this.createQueryBuilder('estimate')
+  //     .update(Estimate)
+  //     .set({ status: EstimateStatus.EXPIRED })
+  //     .where('estimate.id IN (:...ids)', { ids: ids })
+  //     .execute();
+  // } else {
+  //   return null;
+  // }
+  // }
 }
 
 export const ChargeRepositoryProvider = {

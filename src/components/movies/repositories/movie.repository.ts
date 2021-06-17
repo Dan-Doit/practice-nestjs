@@ -39,6 +39,19 @@ export class MovieRepository extends BaseRepository<Movie> {
     );
     return 'inserting is successful';
   }
+
+  async countMovie(id: number) {
+    return this.query(
+      `select
+      (select COUNT(CASE WHEN message.status != 'APPROVAL' THEN 1 END) 컨펌받아야할것
+      from message
+      where message.member_id = 3 and type = 'MASTER' and action = 'PROJECT'),
+        COUNT(CASE WHEN project.status IN ('CREATED','SELECTED_ESTIMATE') THEN 1 END) 생성되거나선택,
+        COUNT(CASE WHEN project.status = 'ING' THEN 1 END) 진행중
+        from project
+        where project.master_id = ${id}`,
+    );
+  }
 }
 
 export const MovieRepositoryProvider = {

@@ -40,3 +40,19 @@ select
       inner join project on negative_opinion.project_id = project.id
   where negative_opinion.epc_id = ${epcId}) result;5
 ```
+
+## postresql 카운트 응용문
+
+```sql
+select
+    project.id
+    from project
+    left join estimate on estimate.project_id = project.id
+    left join epc on estimate.epc_id = epc.id
+    left join partner on epc.id = partner.epc_id
+    left join member on member.partner_id = partner.id
+    left join negative_opinion no on epc.id = no.epc_id
+    where epc.id = 1 and project.status NOT IN ('ING')
+    group by project.id
+    order by project.id ASC;
+```

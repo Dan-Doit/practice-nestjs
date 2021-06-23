@@ -12,7 +12,10 @@ describe('UserService', () => {
     service = module.get<UserService>(UserService);
   });
 
-  it('should be defined', () => {
-    expect(service).toBeDefined();
+  describe('oneUser', () => {
+    it('should return User', async () => {
+      const result = await service.oneUser('spqjeks@naver.com');
+      expect(result.id).toBeDefined();
+    });
   });
 });

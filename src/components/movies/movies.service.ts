@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { Movie } from '../../model/movie.entity';
 import { CreateMovieArgs } from './dto/create-movie.dto';
 import { MovieRepository } from './repositories/movie.repository';
@@ -7,7 +7,7 @@ import { MovieRepository } from './repositories/movie.repository';
 export class MoviesService {
   constructor(private movieRepository: MovieRepository) {}
 
-  async getAllMovies(): Promise<Movie[] | void> {
+  async getAllMovies(): Promise<Movie[]> {
     return this.movieRepository.getAll();
   }
 

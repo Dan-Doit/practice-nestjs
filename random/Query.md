@@ -56,3 +56,10 @@ select
     group by project.id
     order by project.id ASC;
 ```
+
+## postgresql 타임존 수정 및 조회
+
+```shell
+SELECT CURRENT_SETTING('TIMEZONE'), NOW(), CURRENT_TIMESTAMP, clock_timestamp(); -- 조회
+SET TIME ZONE 'Asia/Seoul'; -- 변경
+```

@@ -63,3 +63,9 @@ select
 SELECT CURRENT_SETTING('TIMEZONE'), NOW(), CURRENT_TIMESTAMP, clock_timestamp(); -- 조회
 SET TIME ZONE 'Asia/Seoul'; -- 변경
 ```
+
+## 데이터 테이블 enum 수정하기
+
+```shell
+ALTER TYPE enum_table_name ADD VALUE 'enum_name';
+```

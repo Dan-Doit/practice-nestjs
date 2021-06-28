@@ -69,3 +69,7 @@ SET TIME ZONE 'Asia/Seoul'; -- 변경
 ```shell
 ALTER TYPE enum_table_name ADD VALUE 'enum_name';
 ```
+
+## kafka 공부하기
+
+[라인 테크](https://engineering.linecorp.com/ko/blog/line-shopping-platform-kafka-mongodb-kubernetes/)

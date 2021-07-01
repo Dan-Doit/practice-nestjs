@@ -63,3 +63,15 @@ select
 SELECT CURRENT_SETTING('TIMEZONE'), NOW(), CURRENT_TIMESTAMP, clock_timestamp(); -- 조회
 SET TIME ZONE 'Asia/Seoul'; -- 변경
 ```
+
+## 한번에 많은 쿼리 업데이트하기
+
+```sql
+update commercial_construction set commercial_construction.credit_rate = result.rate
+    from (select commercial_construction.id as id, e.credit_rate as rate from commercial_construction
+inner join construction_contract cc on commercial_construction.id = cc.commercial_construction_id
+inner join contract c on cc.id = c.construction_contract_id
+inner join project p on c.id = p.contract_id
+inner join epc e on p.epc_id = e.id) result
+where id = result.id;
+```

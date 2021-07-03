@@ -75,3 +75,15 @@ inner join project p on c.id = p.contract_id
 inner join epc e on p.epc_id = e.id) result
 where id = result.id;
 ```
+
+## 데이터 한번에 삽입하기
+
+```sql
+insert into [table] select [data]
+```
+
+## 데이터 한번에 업데이트하기
+
+```sql
+update [table] set [column = result.1] , from (select 1,2 from [table]) result where id = result.2
+```

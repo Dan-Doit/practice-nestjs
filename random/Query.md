@@ -87,3 +87,10 @@ insert into [table] select [data]
 ```sql
 update [table] set [column = result.1] , from (select 1,2 from [table]) result where id = result.2
 ```
+
+## 컬럼 삭제
+
+```sql
+ALTER TABLE epc
+DROP COLUMN credit_rate;
+```

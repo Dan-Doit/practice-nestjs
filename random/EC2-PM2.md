@@ -103,7 +103,4 @@
 
   ```shell
   ubuntu@ip:~/app/energyx-api$ pm2 log
-
-  ...
-  # 7|client_d | [Nest] 473991   - 06/16/2021, 5:29:43 PM   [Bootstrap] Server is listening on port 8001
   ```

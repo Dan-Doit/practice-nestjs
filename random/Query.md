@@ -94,3 +94,9 @@ update [table] set [column = result.1] , from (select 1,2 from [table]) result w
 ALTER TABLE epc
 DROP COLUMN credit_rate;
 ```
+
+## max 넘버로 시퀀스 바로 세팅
+
+```sql
+select setval('seq_name', (select max(id) from [table name]));
+```

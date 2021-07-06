@@ -100,3 +100,27 @@ DROP COLUMN credit_rate;
 ```sql
 select setval('seq_name', (select max(id) from [table name]));
 ```
+
+## 효율적인 쿼리
+
+1. HAVING 대신 WHERE 를 사용하자
+2. Primary Key 에는 DISTINCT 를 사용하지 않아도 된다.
+3. Nest가 필요한경우 서브 쿼리보다는 JOIN 문을 사용하도록 하자.
+4. OR 문을 사용하는거 보다 IN 을 사용하도록 하자.
+5. DISTICNT를 사용한다면 서브쿼리를 이용해 구현하는 방법을 고민해보도록하자!
+
+```sql
+SELECT c.country_id, c.country_name FROM countries c WHERE EXISTS (SELECT 'X' FROM customers e WHERE e.country_id = c.country_id);
+```
+
+6. UNION 보다는 UNION ALL이 더 효율적이다.
+7. JOIN 문에 OR를 사용하면 쿼리문이 최소 2배가 느려진다.
+8. 함수를 사용하는것보다 집계기능을 사용하는것이 더 효율적이다.
+
+```sql
+Original: SELECT * FROM sales WHERE EXTRACT (YEAR FROM TO_DATE (time_id, 'DD-MON-RR')) = 2001 AND EXTRACT (MONTH FROM TO_DATE (time_id, 'DD-MON-RR')) = 12;
+
+Improved: SELECT * FROM sales WHERE TRUNC (time_id) BETWEEN TRUNC(TO_DATE('12/01/2001', 'mm/dd/yyyy')) AND TRUNC (TO_DATE ('12/30/2001', 'mm/dd/yyyy'));
+```
+
+9. 쿼리문에서의 수학 연산은 절대로 피해야할 요소중 하나이다.

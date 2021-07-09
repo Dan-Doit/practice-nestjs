@@ -55,3 +55,68 @@ ex)
 
 
 ```
+
+## 파일에서 스크립트 실행 .sh
+
+- sh 파일에서 우리는 배쉬명령을 사용할수있는데 아래와 같이 #!/bin/bash 문구를 입력해주면된다.
+
+```bash
+
+#!/bin/bash
+
+hello="hello"
+world="world"
+
+echo $hello
+echo ${hello}
+
+echo $hello", "$world
+echo ${hello}", "${world}
+```
+
+## IF문
+
+- 마찬가지로 IF문등을 사용할수있다.
+
+```bash
+val="hello"
+
+if [ $val == "hello" ];then
+  echo "hello"
+elif [ $val == "hi" ]; then
+  echo "hi"
+else
+  echo "else"
+fi
+```
+
+## FOR문
+
+- 마찬가지로 FOR문을 사용할수있다.
+
+```bash
+for (( c=1; c<=5; c++ ))
+do
+  echo "value : $c"
+done
+
+또는
+
+for val in {1..5}
+do
+  echo ${val}
+done
+```
+
+## 함수문
+
+- 마찬가지로 IF문등을 사용할수있다.
+
+```bash
+test_func() {
+  echo "hello, world"
+  echo $1
+}
+
+test_func "test"
+```

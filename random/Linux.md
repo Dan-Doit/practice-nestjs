@@ -120,3 +120,9 @@ test_func() {
 
 test_func "test"
 ```
+
+## AWS리눅스 접속방법
+
+```bash
+ssh "key.pem" -i ubuntu@[ip]
+```

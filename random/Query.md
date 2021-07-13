@@ -101,6 +101,20 @@ DROP COLUMN credit_rate;
 select setval('seq_name', (select max(id) from [table name]));
 ```
 
+## postgresql enum 수정하기
+
+```sql
+ALTER TYPE category_enum RENAME TO temp_category_enum;
+
+CREATE TYPE category_enum as enum ('BUSINESS_LICENSE', 'CONSTRUCTION_PERFORMANCE_DOCUMENT');
+
+ALTER TABLE document ALTER COLUMN category TYPE category_enum USING category::text::category_enum;
+
+DROP TYPE temp_category_enum;
+
+SELECT enum_range(null::category_enum)
+```
+
 ## 효율적인 쿼리
 
 1. HAVING 대신 WHERE 를 사용하자

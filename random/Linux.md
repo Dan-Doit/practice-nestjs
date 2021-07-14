@@ -126,3 +126,9 @@ test_func "test"
 ```bash
 ssh "key.pem" -i ubuntu@[ip]
 ```
+
+## MAC에서 모바일 작업시 와치 오류
+
+```bash
+brew install watchman
+```

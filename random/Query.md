@@ -113,6 +113,13 @@ ALTER TABLE document ALTER COLUMN category TYPE category_enum USING category::te
 DROP TYPE temp_category_enum;
 
 SELECT enum_range(null::category_enum)
+
+
+--- 데이터에 디폴트 값이 있어 오류가 날경우
+ALTER TABLE contract
+    ALTER COLUMN status DROP DEFAULT,
+    ALTER COLUMN status TYPE contract_status_enum USING status::text::contract_status_enum,
+    ALTER COLUMN status SET DEFAULT 'CREATED';
 ```
 
 ## 효율적인 쿼리

@@ -101,6 +101,12 @@ DROP COLUMN credit_rate;
 select setval('seq_name', (select max(id) from [table name]));
 ```
 
+## 시퀀스 max값 만들기
+
+```sql
+select setval(id) from (select max(id) from  [table])
+```
+
 ## postgresql enum 수정하기
 
 ```sql

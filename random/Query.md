@@ -101,6 +101,16 @@ ALTER TABLE contract
     ALTER COLUMN status SET DEFAULT 'CREATED';
 ```
 
+## enum 배열 정하기
+
+```sql
+ALTER TABLE table_name
+ADD COLUMN column_name enum_name,
+ADD COLUMN column_name enum_name[] DEFAULT '{}'::enum_name[];
+```
+
+##
+
 ## 효율적인 쿼리
 
 1. HAVING 대신 WHERE 를 사용하자

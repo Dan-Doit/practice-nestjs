@@ -139,3 +139,5 @@ ssh "key.pem" -i ubuntu@[ip]
 ```bash
 brew install watchman
 ```
+
+## 테스트용

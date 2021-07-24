@@ -140,4 +140,4 @@ ssh "key.pem" -i ubuntu@[ip]
 brew install watchman
 ```
 
-## 왜안댐
+## 왜안댐asdasd

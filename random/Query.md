@@ -109,7 +109,11 @@ ADD COLUMN column_name enum_name,
 ADD COLUMN column_name enum_name[] DEFAULT '{}'::enum_name[];
 ```
 
-##
+## 주의 할점
+
+```sql
+    -- 디폴트로 된 데이터를 바로 flyway에서 넣고 싶을경우 COMMIT상태가 되어야 한다.
+```
 
 ## 효율적인 쿼리
 

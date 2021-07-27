@@ -138,3 +138,16 @@ Improved: SELECT * FROM sales WHERE TRUNC (time_id) BETWEEN TRUNC(TO_DATE('12/01
 ```
 
 9. 쿼리문에서의 수학 연산은 절대로 피해야할 요소중 하나이다.
+
+10. random 함수를 사용할때 이런식으로 사용하면 효과적이다.
+
+```sql
+SELECT
+	word
+FROM
+    table_name OFFSET floor(random() * (
+    SELECT
+        COUNT(*)
+    FROM table_name))
+LIMIT 1;
+```

@@ -115,6 +115,13 @@ ADD COLUMN column_name enum_name[] DEFAULT '{}'::enum_name[];
     -- 디폴트로 된 데이터를 바로 flyway에서 넣고 싶을경우 COMMIT상태가 되어야 한다.
 ```
 
+## 제약문 제거하기
+
+```sql
+ALTER TABLE table_name
+DROP CONSTRAINT constraint_name;
+```
+
 ## 효율적인 쿼리
 
 1. HAVING 대신 WHERE 를 사용하자

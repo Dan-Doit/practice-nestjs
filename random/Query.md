@@ -80,6 +80,19 @@ select setval('seq_name', (select max(id) from [table name]));
 select setval(id) from (select max(id) from  [table])
 ```
 
+## 반복문으로 데이터 삽입하기
+
+```sql
+do $$
+begin
+for i in 1..100 loop
+INSERT INTO table VALUES (values);
+end loop;
+end;
+$$;
+commit;
+```
+
 ## postgresql enum 수정하기
 
 ```sql

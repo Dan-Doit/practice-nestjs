@@ -24,3 +24,11 @@ console.log(newAnimals);
 
 // '🐱', '🐹', '🦊', '🐻', '🐶'
 ```
+
+# 스크립트 함수로 알리아스 만들기
+
+```bash
+clientoff() {
+    sudo kill -9 $(sudo lsof -i :3000 | grep LISTEN | awk ${print $2})
+}
+```

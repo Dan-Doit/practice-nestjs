@@ -141,3 +141,19 @@ brew install watchman
 ```
 
 ## 리눅스 Cron
+
+# 스크립트 함수로 알리아스 만들기
+
+```bash
+clientoff() {
+    sudo kill -9 $(sudo lsof -i :3000 | grep LISTEN | awk ${print $2})
+}
+```
+
+# 포트 관련 스크립트
+
+```bash
+alias loip="ipconfig getifaddr en0"
+alias myip="curl http://ipecho.net/plain; echo"
+alias allport="sudo lsof -PiTCP -sTCP:LISTEN"
+```

@@ -1,4 +1,4 @@
-# postgres cof 파일 찾기
+# postgres conf 파일 찾기
 
 ```sql
 $ find / -name pg_hba.conf

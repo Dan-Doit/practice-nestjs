@@ -20,7 +20,6 @@ $ apt install vim
 // 중복값 제거시에는 set 형식을 사용하면된디.
 const animals = ['🐱', '🐹', '🦊', '🐻', '🐶', '🐶', '🦊'];
 const newAnimals = [...new set(animals)];
-console.log(newAnimals);
 
 // '🐱', '🐹', '🦊', '🐻', '🐶'
 ```

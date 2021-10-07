@@ -29,6 +29,12 @@ export class MovieRepository extends BaseRepository<Movie> {
     return movies;
   }
 
+  async getMovie(movieId: number): Promise<Movie> {
+    return this.createQueryBuilder('movie')
+      .where('movie.id = :movieId', { movieId })
+      .getOne();
+  }
+
   async addMovie(args: CreateMovieArgs): Promise<string> {
     const { title, poster, filmed, genre, discription } = args;
     const id = await this.getAll();
@@ -37,7 +43,7 @@ export class MovieRepository extends BaseRepository<Movie> {
         id.length + 1
       },now(),now(),'${title}','${poster}','${filmed}','${genre}','${discription}');`,
     );
-    return 'inserting is successful';
+    return data;
   }
 
   async countMovie(id: number) {

@@ -157,3 +157,16 @@ alias loip="ipconfig getifaddr en0"
 alias myip="curl http://ipecho.net/plain; echo"
 alias allport="sudo lsof -PiTCP -sTCP:LISTEN"
 ```
+
+# 백그라운드로 프로그램 실행하기
+```bash
+# 백그라운드에서 서버 실행
+$ nohup python3 -u /home/ubuntu/app/public-project-api/server.py &
+
+# 로그 보기 
+$ tail -f nohup.out 
+
+# 실행 종료
+$ ps -ef | grep server.py
+$ kill -9 <PID>
+```

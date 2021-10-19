@@ -170,3 +170,28 @@ $ tail -f nohup.out
 $ ps -ef | grep server.py
 $ kill -9 <PID>
 ```
+
+# 크론탭 사용하기
+```bash
+# 크론탭을 설정
+$ crontab -e
+
+# 크론탭 내용 확인
+$ crontab -l
+
+리눅스 쉘에 다음처럼 입력합니다.
+# 크론탭 삭제
+$ crontab -r
+
+# 크론탭 사용 방법
+#     *　　　　　　*　　　　　　*　　　　　　*　　　　　　*
+# 분(0-59)　　시간(0-23)　　일(1-31)　　월(1-12)　　　요일(0-7)
+$ * * * * * ls -al
+# 매분 test.sh 실행
+$ * * * * * /home/test.sh
+# 매주 금요일 오전 5시 45분에 test.sh 를 실행
+$ 45 5 * * 5 /home/test.sh
+
+# 크론 로깅
+$ * * * * * /home/test.sh > /home/test.sh.log 2>&1
+```
